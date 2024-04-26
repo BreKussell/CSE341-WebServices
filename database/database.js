@@ -1,7 +1,7 @@
 const env = require('dotenv')
 env.config();
 
-const mongoClient = require('mango').mongoClient;
+const mongoClient = require('mongo').mongoClient;
 let database;
 
 const initDb = (callback) => {
