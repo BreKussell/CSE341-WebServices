@@ -1,0 +1,27 @@
+# GET request to fetch user by ID
+GET http://api.example.com/users/662b3457b27cfd7c45ade8be
+
+# POST request to create a new user
+POST http://api.example.com/users
+Content-Type: application/json
+
+{
+  "email": "test@test.com",
+  "username": "test@test.com",
+  "name": "SampleName1",
+  "ipaddress": "94.121.163.63"
+}
+
+# PUT request to update an existing user
+PUT http://api.example.com/users/662b3457b27cfd7c45ade8be
+Content-Type: application/json
+
+{
+  "email": "updated@test.com",
+  "username": "updated@test.com",
+  "name": "UpdatedName",
+  "ipaddress": "94.121.163.63"
+}
+
+# DELETE request to delete a user
+DELETE http://api.example.com/users/662b3457b27cfd7c45ade8be
