@@ -14,7 +14,7 @@ app.get('/', (req, res) => {
 });
 
 
-app.use('/', require('./routes'))
+app.use('/', require('./routes/indexRoute.js'))
 
 
 app.use((req, res, next) => {
