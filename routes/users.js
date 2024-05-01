@@ -20,8 +20,7 @@ router.post('/', userController.createUser);
 router.put('/:id', userController.updateUser);
 
 // DELETE requests to '/:id' to delete an existing user
-// Note: There seems to be an error here; it should likely use userController.deleteUser instead of createUser
-router.delete('/:id', userController.createUser);
+router.delete('/:id', userController.deleteUser);
 
 // Export the router so it can be included and used by the main application
 module.exports = router;
