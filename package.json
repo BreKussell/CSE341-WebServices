@@ -17,6 +17,8 @@
     "express": "^4.19.2",
     "express-messages": "^1.0.1",
     "express-session": "^1.18.0",
-    "mongodb": "^6.5.0"
+    "mongodb": "^6.5.0",
+    "swagger-autogen": "^2.23.7",
+    "swagger-ui-express": "^5.0.0"
   }
 }
