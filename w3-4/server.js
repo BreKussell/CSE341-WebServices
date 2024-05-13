@@ -9,6 +9,11 @@ const bcrypt = require('bcryptjs');
 const jwt = require("jsonwebtoken");
 const JWT_SECRET = "dj@ie1p3o1!*i4uxjflwe9e2pqqeiqbvvvc#$#lyqzcwi$ouer#&tymizq"
 const User = require('./models/user');
+const swaggerUi = require('swagger-ui-express');
+const swaggerDocument = require('./swagger-output.json');
+
+app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDocument));
+
 
 
 app.use(express.static('public'));

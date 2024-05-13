@@ -18,6 +18,9 @@
     "express-messages": "^1.0.1",
     "express-session": "^1.18.0",
     "jsonwebtoken": "^9.0.2",
-    "mongoose": "^8.3.4"
+    "mongoose": "^8.3.4",
+    "swagger": "^0.7.5",
+    "swagger-autogen": "^2.23.7",
+    "swagger-ui-express": "^5.0.0"
   }
 }
