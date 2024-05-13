@@ -8,30 +8,39 @@ setInterval(() => {
 }, 12000); // every 10 seconds
 
 
-const form = document.getElementById('login-form')
-form.addEventListener('submit', registerUser)
+document.addEventListener('DOMContentLoaded', function () {
+    const form = document.getElementById('login-form');
+    form.addEventListener('submit', loginUser);
+});
 
-// send data as JSON
-async function registerUser(event) {
-    const username = document.getElementById('username').value
-    const password = document.getElementById('password').value
+async function loginUser(event) {
+    event.preventDefault();  // Prevent the default form submission
 
-    const result = await fetch('/api/login', {
-        method: 'POST',
-        headers: {
-            'Content-Type': 'application/json'
-        },
-        body: JSON.stringify({
-            username,
-            password
-        })
-    }).then((res) => res.json())
-    
-    if (result.status === "Good"){
-        console.log('token received: ', result.data)
-        alert ('Welcome obviously not suspicious person.')
+    const username = document.getElementById('username').value;
+    const password = document.getElementById('password').value;
 
-    }else{
-        alert(result.error)
+    try {
+        const response = await fetch('/api/login', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({
+                username,
+                password
+            })
+        });
+
+        const result = await response.json();
+
+        if (result.status === "Good") {
+            console.log('token received:', result.data);
+            window.location.href = 'animation.html';  // Redirect to animation.html
+        } else {
+            alert(result.error);
+        }
+    } catch (error) {
+        console.error('Error logging in:', error);
+        alert('Failed to login. Please try again later.');
     }
 }

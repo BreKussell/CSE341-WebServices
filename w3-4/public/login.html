@@ -66,19 +66,15 @@
 
 
 <body>
-    <img src="lock.png" class="lock-icon" id="lockIcon">
+  <form id="login-form">
+      <h2>Login Form</h2>
+      <label for="username">Username:</label>
+      <input type="text" id="username" name="username" required>
 
-  
-    <form action="/submit-your-login-form" method="post" id="login-form">
-        <h2>Login Form</h2>
-        <label for="username">Username:</label>
-        <input type="text" id="username" name="username" required>
+      <label for="password">Password:</label>
+      <input type="password" id="password" name="password" required>
 
-        <label for="password">Password:</label>
-        <input type="password" id="password" name="password" required>
-
-        <input type="submit" value="Login">
-    </form>
-    <p>Forgot Password? click <a href="login.html">here to change it</a></p>
+      <input type="submit" value="Login">
+  </form>
 </body>
 </html>

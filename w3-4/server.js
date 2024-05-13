@@ -4,7 +4,6 @@ const host = 'localhost'
 const port = 3000;
 const app = express();
 const mongoose = require('mongoose');
-const user = require("./models/user");
 const bcrypt = require('bcryptjs');
 const jwt = require("jsonwebtoken");
 const JWT_SECRET = "dj@ie1p3o1!*i4uxjflwe9e2pqqeiqbvvvc#$#lyqzcwi$ouer#&tymizq"
@@ -27,7 +26,7 @@ app.post('/api/login', async (req, res) => {
 
 
 
-mongoose.connect(' ',{ //Connect mongoDB
+mongoose.connect('mongodb+srv://rus17008:KOdFQhioxprW8DyD@cluster0.jnkg9pl.mongodb.net/users',{ //Connect mongoDB
     useNewURLParser: true,
     useUnifiedTopology: true
 })
@@ -168,7 +167,7 @@ app.post('/api/login', async (req, res) => {
 });
 
 
-app.post()
+
 
 
 // Initialize database and start server
