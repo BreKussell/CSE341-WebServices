@@ -8,6 +8,9 @@ setInterval(() => {
 }, 12000); // every 10 seconds
 
 
+
+const mongoose = require('mongoose');
+
 document.addEventListener('DOMContentLoaded', function () {
     const form = document.getElementById('login-form');
     form.addEventListener('submit', loginUser);

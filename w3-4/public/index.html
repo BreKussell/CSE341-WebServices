@@ -43,9 +43,8 @@
 <script src="./scripts/registerScript.js"></script>
 </head>
 <body>
-    <h1>Registration</h1>
-    <form id="reg-form" method="post">
-        <h2>Login Form</h2>
+    <form id="reg-form" action="/api/register" method="post">
+        <h2>Registration Form</h2>
         <label for="username">Username:</label>
         <input type="text" id="reg-username" name="username"  autocomplete="off"  required>
 
@@ -53,7 +52,8 @@
         <input type="password" id="reg-password" name="password" autocomplete="off"  required>
 
         <input type="submit" value="Submit Form">
+        <p>already registered? click <a href="login.html">here to login</a></p>
     </form>
-    <p>already registered? click <a href="login.html">here to login</a></p>
+  
 </body>
 </html>

@@ -4,6 +4,7 @@ const host = 'localhost'
 const port = 3000;
 const app = express();
 const mongoose = require('mongoose');
+
 const bcrypt = require('bcryptjs');
 const jwt = require("jsonwebtoken");
 const JWT_SECRET = "dj@ie1p3o1!*i4uxjflwe9e2pqqeiqbvvvc#$#lyqzcwi$ouer#&tymizq"
@@ -36,42 +37,34 @@ mongoose.connect('mongodb+srv://rus17008:KOdFQhioxprW8DyD@cluster0.jnkg9pl.mongo
  ****Register User
 *******************************************/
 
-app.post('/api/register', async (req, res) =>{
-    const { username, password: plainTextPassword } = req.body
-    if(!username || typeof username !== 'string' ) {
-        return res.json({ status: 'error', error: 'Invalid username'  })
+app.post('/api/register', async (req, res) => {
+    const { username, password: plainTextPassword } = req.body;
+
+    if (!username || typeof username !== 'string') {
+        return res.json({ status: 'error', error: 'Invalid username' });
     }
 
-    if(!plainTextPassword || typeof plainTextPassword !== 'string' ) {
-        return res.json({ status: 'error', error: 'Invalid password'  })
+    if (!plainTextPassword || typeof plainTextPassword !== 'string') {
+        return res.json({ status: 'error', error: 'Invalid password' });
     }
 
-    if (plainTextPassword.length  < 8) {
-        return res.json({ status: 'error', error: 'Password is too short. Make your password at least 8 characters long'  })
+    if (plainTextPassword.length < 8) {
+        return res.json({ status: 'error', error: 'Password is too short. Make your password at least 8 characters long' });
     }
 
-    // hashing passwords
-    const password = await bcrypt.hash(plainTextPassword, 10)
-   // console.log(bcrypt.hash('password', 10))
-
- 
-   try {
-    const response = await User.create({
-        username,
-        password
-    });
-    console.log('User created successfully:', response);
-    res.json({status: 'Good'});
-} catch (error) {
-    if (error.code === 11000) { //duplicate key/username
-        return res.json({ status: "error", error: "This username is already in use"});
+    try {
+        const password = await bcrypt.hash(plainTextPassword, 10);
+        const response = await User.create({ username, password });
+        console.log('User created successfully:', response);
+        res.json({ status: 'Good' }); // Only send this once, and only on success
+    } catch (error) {
+        console.error('Error registering user:', error);
+        if (error.code === 11000) { // Duplicate key/username
+            return res.json({ status: 'error', error: 'This username is already in use' });
+        }
+        res.status(500).json({ status: 'error', error: 'Internal server error' });
     }
-    console.error(error);
-    throw error; 
-}
-res.json({status: 'Good'})
-})
-
+});
 
 
 /******************************************

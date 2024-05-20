@@ -1,10 +1,10 @@
 const mongoose = require('mongoose');
 
 // MongoDB connection URI
-const dbURI = 'mongodb+srv://rus17008:KOdFQhioxprW8DyD@cluster0.jnkg9pl.mongodb.net/users'; 
+const dbURL = 'mongodb+srv://rus17008:KOdFQhioxprW8DyD@cluster0.jnkg9pl.mongodb.net/users'; 
 //
 // Connect to MongoDB using Mongoose
-mongoose.connect(dbURI, {
+mongoose.connect(dbURL, {
   useNewUrlParser: true,
   useUnifiedTopology: true,
   useCreateIndex: true, // Deprecation warning fix for ensureIndex
@@ -19,7 +19,7 @@ mongoose.connect(dbURI, {
 mongoose.connection.on('error', err => {
   console.error('Mongoose initial connection error:', err);
 });
-
+ 
 // To handle errors after initial connection was established
 mongoose.connection.on('reconnected', () => {
   console.log('MongoDB reconnected!');
@@ -28,7 +28,7 @@ mongoose.connection.on('reconnected', () => {
 mongoose.connection.on('disconnected', () => {
   console.log('MongoDB disconnected!');
   // Optionally try to reconnect
-  mongoose.connect(dbURI, {
+  mongoose.connect(dbURL, {
     useNewUrlParser: true,
     useUnifiedTopology: true
   });

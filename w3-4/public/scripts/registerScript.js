@@ -1,9 +1,11 @@
-const form = document.getElementById('reg-form')
-form.addEventListener('submit', registerUser)
+const form = document.getElementById('reg-form');
+form.addEventListener('submit', registerUser);
 
 async function registerUser(event) {
-    const username = document.getElementById('reg-username').value
-    const password = document.getElementById('reg-password').value
+    event.preventDefault();  // Stop the form from submitting in the traditional way
+
+    const username = document.getElementById('reg-username').value;
+    const password = document.getElementById('reg-password').value;
 
     const result = await fetch('/api/register', {
         method: 'POST',
@@ -14,12 +16,12 @@ async function registerUser(event) {
             username,
             password
         })
-    }).then((res) => res.json())
-    
-    if (result.status === "Good"){
-        alert ('User created successfully')
+    }).then((res) => res.json());
 
-    }else{
-        alert(result.error)
+    if (result.status === "Good") {
+        alert('User created successfully');
+        window.location.href = '../login.html'; //redirect to login
+    } else {
+        alert(result.error);
     }
 }
