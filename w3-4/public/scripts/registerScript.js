@@ -1,7 +1,6 @@
 const form = document.getElementById('reg-form')
 form.addEventListener('submit', registerUser)
 
-// send data as JSON
 async function registerUser(event) {
     const username = document.getElementById('reg-username').value
     const password = document.getElementById('reg-password').value
